@@ -47,8 +47,8 @@
                 <div class="card card-table border-0">
                     <div class="card-body">
 
-                        <p class="bg-light border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
-                            Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado.</br>
+                        <p class="d-none d-lg-block bg-light border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
+                            Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado<br />
                             Você pode <u>selecionar as linhas da página corrente</u> clicando em qualquer coluna ou no checkbox. Para selecionar um intervalo de linhas, clique em qualquer linha, <u>segure a tecla SHIFT e clique na última linha</u> que deseja selecionar.
                         </p>
                         {{-- data-fixed-columns="true" --}}

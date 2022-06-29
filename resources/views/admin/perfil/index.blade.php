@@ -30,8 +30,8 @@
 
                     <div class="card-body">
 
-                        <p class="bg-light border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
-                            Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado.</br>
+                        <p class="d-none d-lg-block bg-light border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
+                            Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado
                         </p>
 
                         <table class="nowrap datatable table-hover order-column mb-0 table" data-scroll-x="true" data-ajax="{{ route('admin.perfil.datatables') }}">

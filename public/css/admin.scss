@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Cinzel|Open+Sans+Condensed:300i');
+// @import url('https://fonts.googleapis.com/css?family=Cinzel|Open+Sans+Condensed:300i');
 
 @font-face {
     font-family: 'JetBrainsMono';
@@ -653,5 +653,30 @@ body {
                 margin-left: 0;
             }
         }
+
+        .dt-buttons {
+            margin-bottom: 0;
+        }
+
+        .dataTables_wrapper {
+
+            .dataTables_filter {
+                label {
+                    padding-top: 0.85em;
+                    display: block;
+
+                    input {
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .dataTables_info {
+                padding-bottom: 0.85em;
+
+            }
+        }
+
     }
 }

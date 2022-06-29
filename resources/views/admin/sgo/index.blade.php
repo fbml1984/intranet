@@ -23,7 +23,7 @@
                 <div class="card card-table border-0">
                     <div class="card-body">
 
-                        <p class="bg-light border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
+                        <p class="d-none d-lg-block border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
                             Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado.</br>
                         </p>
 
