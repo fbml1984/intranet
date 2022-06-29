@@ -14,6 +14,7 @@
                         </span>
                     </div>
                 </button>
+
                 <ul class="dropdown-menu dropdown-menu-lg-end animate slideIn border-0">
                     <h6 class="dropdown-header">Bem-vindo {{ session(\App\Enums\Parametros::CHAVE_USUARIO_LOGADO)->apelido }}!</h6>
                     <li>
