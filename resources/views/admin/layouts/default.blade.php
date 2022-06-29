@@ -83,8 +83,8 @@
 
     <script src="{{ asset('js/admin/utils.js?m=') . microtime() }}"></script>
     <script src="{{ asset('js/smart-datatables.js') }}">
-    <script src="{{ asset('js/init.validation.js') }}"></script>
-        DataTable.datetime('DD/MM/YYYY hh:mm:ss')
+        < script src = "{{ asset('js/init.validation.js') }}" >
+            DataTable.datetime('DD/MM/YYYY hh:mm:ss')
     </script>
     @yield('scripts')
     @stack('scripts')

@@ -11,23 +11,21 @@
         <div class="col-12">
             <div class="card border-0">
                 <div class="card-header border-0 bg-white py-3">
-                    <div class="d-flex align-items-center">
-                        <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.usuarios') }}">
-                            Usuários
-                        </a>
-                        <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.tags') }}">
-                            Tags
-                        </a>
-                        <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.subcategorias') }}">
-                            Subcategorias
-                        </a>
-                        <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.despesas') }}">
-                            Despesas
-                        </a>
-                        <a class="btn btn-sm btn-primary disabled p-1" href="{{ route('integra_espresso.adiantamentos') }}">
-                            Adiantamentos
-                        </a>
-                    </div>
+                    <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.usuarios') }}">
+                        Usuários
+                    </a>
+                    <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.tags') }}">
+                        Tags
+                    </a>
+                    <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.subcategorias') }}">
+                        Subcategorias
+                    </a>
+                    <a class="btn btn-sm btn-outline-muted" href="{{ route('integra_espresso.despesas') }}">
+                        Despesas
+                    </a>
+                    <a class="btn btn-sm btn-primary disabled p-1" href="{{ route('integra_espresso.adiantamentos') }}">
+                        Adiantamentos
+                    </a>
                 </div>
             </div>
         </div>

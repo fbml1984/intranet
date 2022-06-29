@@ -78,6 +78,13 @@
                 _sortable = _data.hasOwnProperty('sortable') ? Boolean(_data.sortable) : true,
                 _visible = _data.hasOwnProperty('visible') ? Boolean(_data.visible) : true
 
+            let buttons = []
+            let i = 0
+            while (_data.hasOwnProperty('url' + i) && _data.hasOwnProperty('icon' + i)) {
+                buttons.push({ 'url': eval('_data.url' + i), 'icon': eval('_data.icon' + i) })
+                i++
+            }
+
             let _isCheckbox = function () {
                 return _datatype === 'checkbox'
             }
@@ -122,13 +129,7 @@
                                 let _href = _url !== '' ? _url.replace('#id#', _data) : _data
                                 return `<a class="btn d-inline-flex align-items-center justify-content-center p-1 ms-2" target="${_target}" href="${_href}"><i class="${_icon}"></i></a>`
                             case 'button':
-                                let _html = '',
-                                    buttons = [],
-                                    i = 0
-                                while (_data.hasOwnProperty('url' + i) && _data.hasOwnProperty('icon' + i)) {
-                                    buttons.push({ 'url': eval('_data.url' + i), 'icon': eval('_data.icon' + i) })
-                                    i++
-                                }
+                                let _html = ''
                                 if (buttons.length > 0) {
                                     for (let i = 0; i < buttons.length; i++) {
                                         _html += `<a class="btn d-inline-flex align-items-center justify-content-center p-1 me-3" target="${_target}" href="${buttons[i].url.replace('#id#', _data)}"><i class="${buttons[i].icon}"></i></a>`
