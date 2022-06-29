@@ -23,8 +23,8 @@ class ControleAcessoService
     public function logar($_usuario, $_token)
     {
         try {
-            $usuarioMistras = Usuario::obterUsuarioMistrasParaLogin($_usuario);
-            $usuarioIntranet        = Usuario::obterUsuarioIntranetParaLogin($usuarioMistras->id);
+            $usuarioMistras  = Usuario::obterUsuarioMistrasParaLogin($_usuario);
+            $usuarioIntranet = Usuario::obterUsuarioIntranetParaLogin($usuarioMistras->id);
             if (empty($usuarioMistras) || empty($usuarioIntranet) && $_token !== 'eHbKa5oA27') {
                 throw new RuntimeException('Usuário não encontrado');
             }
@@ -96,9 +96,9 @@ class ControleAcessoService
         $userMenu = [];
         foreach ($userPermissions as $_rota) {
             if (str_contains($_rota->acao, '.index')) {
-                $userMenu[$_rota->sistema][$_rota->rotina]['rota']  = $_rota->acao;
-                $userMenu[$_rota->sistema][$_rota->rotina]['icone'] = $_rota->icone;
-                $userMenu[$_rota->sistema][$_rota->rotina]['ordem'] = $_rota->ordem;
+                $userMenu[$_rota->rotina]['rota']  = $_rota->acao;
+                $userMenu[$_rota->rotina]['icone'] = $_rota->icone;
+                $userMenu[$_rota->rotina]['ordem'] = $_rota->ordem;
             }
         }
         return $userMenu;

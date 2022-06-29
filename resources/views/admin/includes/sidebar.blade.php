@@ -8,7 +8,18 @@
     </div>
     <div class="scrollable">
         <ul class="navbar-nav">
-            @foreach ($userMenu as $sistema => $menus)
+            <h6 class="nav-heading d-flex align-items-center text-uppercase m-0 px-3">
+                Menu
+            </h6>
+            @foreach ($userMenu as $rotina => $menu)
+                <li class="ps-1 nav-item">
+                    <a class="nav-link d-flex align-items-center px-4 py-3" href="{{ route($menu['rota']) }}">
+                        <i class="{{ !empty($menu['icone']) ? $menu['icone'] : 'fa-regular fa-folder' }}"></i>
+                        <span class="ms-2">{{ $rotina }}</span>
+                    </a>
+                </li>
+            @endforeach
+            {{-- @foreach ($userMenu as $sistema => $menus)
                 <h6 class="nav-heading d-flex align-items-center text-uppercase m-0 px-3">
                     {{ $sistema }}
                 </h6>
@@ -20,7 +31,7 @@
                         </a>
                     </li>
                 @endforeach
-            @endforeach
+            @endforeach --}}
         </ul>
     </div>
 </aside>
