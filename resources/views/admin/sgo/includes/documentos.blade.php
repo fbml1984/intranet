@@ -27,7 +27,7 @@
                                         <td>{{ $arquivo->CRIADO }}</td>
                                         <td>{{ date('d/m/Y H:i:s', strtotime($arquivo->CRIADOEM)) }}</td>
                                         <td>
-                                            <a class="btn d-inline-flex align-items-center justify-content-center ms-2 p-1" href="{{ route('sgo.documento.visualizar', ['idDiario' => $arquivo->IDDIARIO, 'idDocumento' => $arquivo->IDDOC]) }}" target="_blank">
+                                            <a class="btn d-inline-flex align-items-center justify-content-center ms-2 p-1" href="{{ route('sgo.documento.visualizar', ['idDiario' => $arquivo->IDDIARIO, 'idDocumento' => $arquivo->IDDOC]) }}">
                                                 <i class="fa-solid fa-file-arrow-down"></i>
                                             </a>
                                         </td>

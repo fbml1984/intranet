@@ -30,10 +30,9 @@
                     <div class="card-body">
                         {!! Form::hidden('_token', csrf_token()) !!}
                         <p class="d-none d-lg-block bg-light border-start border-primary text-muted border-3 cfs-6 mb-4 py-4 px-3">
-                            <sup>DICA 1</sup>Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado</br>
-                            <sup>DICA 2</sup> Ao editar o valor de algum campo, é necessário clicar fora do campo editado e aguardar a mensagem, para que as alterações sejam salvas
+                            <sup class="me-2"><small>DICA 1</small></sup> Para pesquisar, digite o valor desejado no campo "Pesquisar". Para limpar a pesquisa, apague o valor digitado</br>
+                            <sup class="me-2"><small>DICA 2</small></sup> Ao editar o valor de algum campo, é necessário clicar fora do campo editado e aguardar a mensagem, para que as alterações sejam salvas
                         </p>
-
                         <table class="nowrap datatable table-hover order-column mb-0 table" data-scroll-x="true" data-ajax="{{ route('admin.rotina.datatables') }}">
                             <thead>
                                 <tr>

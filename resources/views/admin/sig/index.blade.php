@@ -34,7 +34,7 @@
                                     <th width="100px" data-name="diretorio" scope="col">Diretório</th>
                                     <th data-name="arquivo" scope="col">Arquivo</th>
                                     <th width="150px" data-name="data_mapeamento" data-sortable="false" class="not-exportable" scope="col">Data Mapemamento</th>
-                                    <th width="100px" data-type="link" data-icon="fa-solid fa-file-lines" data-url="{{ route('sig.documento.visualizar', '#id#') }}" data-target="_blank" data-name="id" data-sortable="false" scope="col">Visualizar</th>
+                                    <th width="100px" data-type="link" data-icon="fa-solid fa-file-lines" data-url="{{ route('sig.documento.visualizar', '#id#') }}" data-name="id" data-sortable="false" scope="col">Visualizar</th>
                                 </tr>
                             </thead>
                             <tbody>

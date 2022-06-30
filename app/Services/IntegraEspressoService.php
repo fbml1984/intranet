@@ -184,17 +184,25 @@ class IntegraEspressoService
     private function _criarLancamentos($registros, $usuarioLogado, $tipo)
     {
         foreach ($registros as $registro) {
-            $atributos         = $registro['attributes'];
-            $relacionamentos   = $registro['relationships'];
+            $atributos       = $registro['attributes'] ?? [];
+            $relacionamentos = $registro['relationships'] ?? [];
+
+            $_tags = isset($relacionamentos['tags']['data']) ? count($relacionamentos['tags']['data']) : 1;
+
+            $_value     = isset($atributos['value']) && !empty($atributos['value']) ? $atributos['value'] : 0;
+            $_custo     = isset($atributos['cost']) && !empty($atributos['cost']) ? $atributos['cost'] : $_value;
+            $_custoBase = isset($atributos['base_cost']) && !empty($atributos['base_cost']) ? $atributos['base_cost'] : 0;
+            $custo      = $_custo > 0 && $_tags > 0 ? $_custo / $_tags : $_custo;
+            $custoBase  = $_custoBase > 0 && $_tags > 0 ? $_custoBase / $_tags : $_custoBase;
+
             $espressoId        = (int) $registro['id'];
             $espressoUsuarioId = (int) $relacionamentos['user']['data']['id'];
-            $qtdTags           = isset($relacionamentos['tags']['data']) ? count($relacionamentos['tags']['data']) : 1;
             $tagId             = !empty($relacionamentos['tags']['data'][0]['id'] ?? null) ? (int) $relacionamentos['tags']['data'][0]['id'] : null;
             $subcategoriaId    = !empty($relacionamentos['subcategory']['data']['id'] ?? null) ? (int) $relacionamentos['subcategory']['data']['id'] : null;
             $relatorioId       = !empty($relacionamentos['report']['data']['id'] ?? null) ? (int) $relacionamentos['report']['data']['id'] : null;
             $data              = $atributos['performed_at'] ?? $atributos['date'] ?? null;
-            $custo             = !empty($atributos['value'] ?? null) ? (float) $atributos['value'] : (!empty($atributos['cost'] ?? null) ? (float) ($atributos['cost'] / $qtdTags) : 0);
-            $custoBase         = !empty($atributos['base_cost'] ?? null) ? (float) ($atributos['base_cost'] / $qtdTags) : 0;
+            $custo             = $custo;
+            $custoBase         = $custoBase;
             $urlAnexo          = $atributos['attachment_url'] ?? null;
 
             $registro = [

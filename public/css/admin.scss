@@ -114,6 +114,15 @@ body {
     }
 
     table {
+
+        &.nowrap {
+
+            th,
+            td {
+                white-space: nowrap;
+            }
+        }
+
         thead {
 
             td,
