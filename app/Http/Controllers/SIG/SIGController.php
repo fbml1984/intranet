@@ -23,7 +23,7 @@ class SIGController extends Controller
     {
         try {
             $chave = SIG::requisitar();
-            return redirect()->away(env('API_URL') . "/controle_documentos/sgd?id={$id}&hash={$chave}");
+            return redirect()->to(env('API_URL') . "/controle_documentos/sgd?id={$id}&hash={$chave}");
         } catch (Exception $e) {
             dd($e);
         }
