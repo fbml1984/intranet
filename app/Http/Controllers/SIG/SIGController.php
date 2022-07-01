@@ -22,35 +22,17 @@ class SIGController extends Controller
     public function view($id)
     {
         try {
+            $_arquivo = SIG::obterArquivoPorId($id);
+            $chave    = SIG::obterChave();
+            $url      = env('API_URL') . "/documentos/arquivo?arquivo_id={$id}&hash={$chave}";
+            $arquivo  = file_get_contents($url);
+            $base64   = true;
 
-            $chave   = SIG::obterChave();
-            $url     = env('API_URL') . "/controle_documentos/sgd_v2?id={$id}&hash={$chave}";
-            $arquivo = file_get_contents($url);
-
-            if (!empty($arquivo)) {
-
-                $_arquivo = SIG::obterArquivoPorId($id);
-                if (empty($_arquivo)) {
-                    //throw
-                }
-
-                switch ($_arquivo->extensao) {
-                    case "pdf":
-                        header("Content-type: application/pdf");
-                        break;
-                    case "doc":
-                    case "docx":
-                        header('Content-Type: application/octet-stream');
-                        break;
-                    case "xls":
-                    case "xlsx":
-                        header('Content-Type: application/vnd.ms-excel');
-                        break;
-                }
-                header("Content-Disposition: inline; filename=\"{$_arquivo->arquivo}\"");
-                echo file_get_contents("data://application/{$_arquivo->extensao};base64," . $arquivo);
-                die;
+            if (empty($_arquivo) || empty($_arquivo)) {
+                //throw
             }
+
+            abrirArquivo($_arquivo->nome, $_arquivo->extensao, $arquivo, $base64);
         } catch (Exception $e) {
             dd($e);
         }

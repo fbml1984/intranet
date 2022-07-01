@@ -51,11 +51,20 @@ class SGOController extends Controller
         }
     }
 
-    public function view($idDiario, $idDocumento)
+    public function view($diarioId, $documentoId)
     {
         try {
-            $chave = SGO::requisitar();
-            return redirect()->away(env('API_URL') . "/controle_documentos/visualiza?diario={$idDiario}&documento={$idDocumento}&hash={$chave}");
+            $_arquivo = SGO::obterArquivoPorId($diarioId, $documentoId);
+            $chave    = SGO::obterChave();
+            $url      = env('API_URL') . "/documentos/arquivo?diario_id={$diarioId}&documento_id={$documentoId}&hash={$chave}";
+            $arquivo  = file_get_contents($url);
+            $base64   = false;
+
+            if (empty($_arquivo) || empty($_arquivo)) {
+                //throw
+            }
+
+            abrirArquivo($_arquivo->nome, $_arquivo->extensao, $arquivo, $base64);
         } catch (Exception $e) {
             dd($e);
         }

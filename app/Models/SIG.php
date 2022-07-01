@@ -27,7 +27,9 @@ class SIG extends Model
     {
         $query = "
             SELECT
-                *
+                id_arquivo id,
+                arquivo nome,
+                extensao
             FROM
                 controle_de_documentos.dbo.arquivos_mapeados
             WHERE

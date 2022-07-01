@@ -35,7 +35,7 @@
                                     <th data-name="NOMEFANTASIA" scope="col">Cliente</th>
                                     <th width="150px" data-name="usuario_arquivo" scope="col">Usuário Inclusão</th>
                                     <th width="150px" data-name="data_arquivo" data-sortable="false" class="not-exportable" scope="col">Data Inclusão. Ult. Arq.</th>
-                                    <th width="100px" data-type="modal" data-icon="fa-solid fa-file-lines" data-url="{{ route('sgo.documentos.listar', '#id#') }}" data-name="id" data-sortable="false" scope="col">Arquivos</th>
+                                    <th width="100px" data-type="modal" data-icon="fa-solid fa-file-lines" data-target="_blank" data-url="{{ route('sgo.documentos.listar', '#id#') }}" data-name="id" data-sortable="false" scope="col">Arquivos</th>
                                 </tr>
                             </thead>
                             <tbody>

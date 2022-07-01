@@ -1,4 +1,27 @@
 <?php
+
+if (!function_exists('slugify')) {
+    function slugify($text, string $divider = '-')
+    {
+        // replace non letter or digits by divider
+        $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+        // trim
+        $text = trim($text, $divider);
+        // remove duplicate divider
+        $text = preg_replace('~-+~', $divider, $text);
+        // lowercase
+        $text = strtolower($text);
+        if (empty($text)) {
+            return 'n-a';
+        }
+        return $text;
+    }
+}
+
 if (!function_exists('executeQuery')) {
     function executeQuery($query)
     {
@@ -20,36 +43,38 @@ if (!function_exists('executeQuery')) {
             return [];
         }
     }
-    // function executeQuery($query)
-    // {
-    //     try {
+}
 
-    //         $curl = curl_init();
-
-    //         curl_setopt_array($curl, array(
-    //             CURLOPT_URL            => env('API_URL') . '/api/conn?op=2',
-    //             CURLOPT_RETURNTRANSFER => true,
-    //             CURLOPT_ENCODING       => '',
-    //             CURLOPT_MAXREDIRS      => 10,
-    //             CURLOPT_TIMEOUT        => 0,
-    //             CURLOPT_FOLLOWLOCATION => true,
-    //             CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-    //             CURLOPT_CUSTOMREQUEST  => 'POST',
-    //             CURLOPT_POSTFIELDS     => '000000' . base64_encode($query) . '00',
-    //             CURLOPT_HTTPHEADER     => array(
-    //                 'Content-Type: application/json',
-    //             ),
-    //         ));
-
-    //         $response = curl_exec($curl);
-
-    //         curl_close($curl);
-    //         return json_decode($response);
-
-    //     } catch (Exception $e) {
-    //         return [];
-    //     }
-    // }
+if (!function_exists('abrirArquivo')) {
+    function abrirArquivo($nomeArquivo, $extensao, $arquivo, $base64 = true)
+    {
+        switch ($extensao) {
+            case "doc":
+            case "docx":
+                header('Content-Type: application/octet-stream');
+                break;
+            case "xls":
+            case "xlsx":
+                header('Content-Type: application/vnd.ms-excel');
+                break;
+            case "ocx":
+                header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+                break;
+            case "lsx":
+                header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+                break;
+            default:
+                header("Content-type: application/pdf");
+                break;
+        }
+        header("Content-Disposition: inline; filename=\"" . slugify($nomeArquivo) . "\"");
+        if ($base64) {
+            echo file_get_contents("data://application/{$extensao};base64,{$arquivo}");
+        } else {
+            echo $arquivo;
+        }
+        die;
+    }
 }
 
 if (!function_exists('generateRandomString')) {

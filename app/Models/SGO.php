@@ -56,21 +56,26 @@ class SGO extends Model
         return executeQuery($query);
     }
 
-    public static function listarDocumentosDiretorios()
+    public static function obterArquivoPorId($diarioId, $documentoId)
     {
-        $query = '
+        $query = "
             SELECT
-                *
+                IDDOC id,
+                NOMEARQUIVO nome,
+                case when NOMEARQUIVO like '%.%'
+                    then reverse(left(reverse(NOMEARQUIVO), charindex('.', reverse(NOMEARQUIVO)) - 1))
+                    else ''
+                end extensao
             FROM
-                controle_de_documentos.dbo.arquivos_mapeados doc,
-                controle_de_documentos.dbo.diretorios_mapeados dir
+                CORPORERM_CLOUD.CI30A5_128116_RM_PD.DBO.MPRJDIARIODOC M
             WHERE
-                dir.id_diretorio = doc.id_diretorio
-        ';
-        return executeQuery($query);
+                M.IDDIARIO = {$diarioId}
+                AND M.IDDOC = {$documentoId}
+        ";
+        return collect(executeQuery($query))->first();
     }
 
-    public static function requisitar()
+    public static function obterChave()
     {
         $chave = md5(microtime());
         $query = "INSERT INTO CORPORERM_CLOUD.CI30A5_128116_RM_PD.DBO.SGO_CONTROLE_ACESSO_DOCUMENTOS(CHAVE) VALUES ('{$chave}')";
